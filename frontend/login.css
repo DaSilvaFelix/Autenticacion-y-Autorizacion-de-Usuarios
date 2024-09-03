@@ -1,0 +1,16 @@
+.botones{
+    display: flex;
+    justify-content: space-evenly ;
+    align-items: center;
+}
+.botones button{
+    width: 100px ;}
+.botones a{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+.botones a:hover{
+    text-decoration: underline;
+    color: rgb(53, 30, 124);
+}
