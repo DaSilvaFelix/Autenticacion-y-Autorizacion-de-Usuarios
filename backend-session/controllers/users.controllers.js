@@ -6,12 +6,12 @@ export const searchUser = async (req, res) => {
     const conectado = await conexion();
     const sql = `SELECT * FROM users WHERE username = ? and users.password = ?`
     const [user] = await conectado.query(sql,[username,password]); 
-    console.log(user);
+    console.log(user[0]);
     
     if (user) {
         // Guardar información del usuario en la sesión
-        req.session.userId = user.id;
-        req.session.username = user.username;
+        req.session.userId = user[0].id;
+        req.session.username = user[0].username;
 
         return res.json({ 
             message: 'Inicio de sesión exitoso', 
