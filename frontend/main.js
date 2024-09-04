@@ -9,6 +9,8 @@
 
     if (response.ok) {
         const data = await response.json();
+        console.log(data);
+        
         document.getElementById('user-name').innerText = data.user.username;
     } else {
         // Redirigir al usuario a la página de inicio de sesión

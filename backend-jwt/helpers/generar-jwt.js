@@ -1,7 +1,9 @@
 import jwt from 'jsonwebtoken';
-import { SECRET_KEY } from '../config/env.js';
+import { SECRET_KEY } from '../config/config.js';
 
 export default ( userId ) => {
+    console.log(userId);
+    
     return new Promise( ( resolve, reject ) => {
 
         const payload = { userId };

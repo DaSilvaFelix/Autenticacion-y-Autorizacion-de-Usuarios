@@ -6,7 +6,8 @@ export const loginSession = async (req, res) => {
     try {
         const conectado = await conexion();
         const sql = 'SELECT * FROM `users` WHERE username = ? and password = ?';
-        const [user] = await conectado.query(sql,[username,password]);
+        const [[user]] = await conectado.query(sql,[username,password]);
+        console.log("Acá",user.id);
         
         
         // Validación de usuario
@@ -15,7 +16,8 @@ export const loginSession = async (req, res) => {
         }
 
         // Generar token JWT
-        const token = await generarJwt(user[0].id);
+        const token = await generarJwt(user.id);
+        
 
         // Almacenar el token en la sesión del servidor
         req.session.token = token;
