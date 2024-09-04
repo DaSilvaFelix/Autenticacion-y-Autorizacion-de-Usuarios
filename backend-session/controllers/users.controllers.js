@@ -53,3 +53,28 @@ export const closeSession = (req, res) => {
         
     }
 };
+export const register = async (req, res) => {
+    const {username, password} = req.body;
+    if(!username && !password ){
+        return res.status(404).json({
+            msg:'todos los campos deben estar completos'
+        })
+    }else if(!username && password){
+        return res.status(404).json({
+            msg:'todos los campos deben estar completos'
+        })
+    }else if(username && !password){
+        return res.status(404).json({
+            msg:'todos los campos deben estar completos'
+        })
+    }
+    try {
+        const conectado = await conexion();
+        const sql = 'INSERT INTO `users`( `username`, `password`) VALUES (?,?);'
+        const [respuesta] = await conectado.query(sql,[username,password]);
+        if(respuesta)res.json({msg:'datos insertados correctamente'})   
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
